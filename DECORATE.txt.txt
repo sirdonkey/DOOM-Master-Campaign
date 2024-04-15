@@ -1,0 +1,182 @@
+actor SuperZombieMan : Zombieman replaces ArmorBonus
+{
+  health 1000
+  speed 16
+  obituary "%o was clapped by a strangley powerful zombie."
+  states
+  {
+  Pain:
+    POSS E 10 A_FaceTarget
+    POSS F 8 A_PosAttack
+    POSS E 8
+    goto See
+  }
+}
+
+
+actor CaptainArchie : Archvile replaces Archvile
+{
+  health 3010
+  speed 30
+  obituary "%o 's ass was set on fire by Captain Archie."
+  states
+  {
+  Pain:
+VILE G 0 BRIGHT A_VileStart
+VILE G 10 BRIGHT A_FaceTarget
+VILE H 8 BRIGHT A_VileTarget
+VILE IJKLMN 8 BRIGHT A_FaceTarget
+VILE O 8 BRIGHT A_VileAttack
+VILE P 20 BRIGHT
+goto See
+  }
+}
+
+
+actor BaalgarDemon : Cyberdemon replaces Cyberdemon
+{
+health 4080
+speed 32
+obituary "o% ' balls were destroyed by the Baalgar Demon."
+states
+{
+CYBR E 6 A_FaceTarget
+		CYBR F 12 A_CyberAttack
+		CYBR E 12 A_FaceTarget
+		CYBR F 12 A_CyberAttack
+		CYBR E 12 A_FaceTarget
+		CYBR F 12 A_CyberAttack
+		goto See
+  }
+}
+
+
+
+actor Prowler : DoomImp replaces DoomImp
+{
+health 125
+speed 40
+obituary "%o was sucker punched by the Prowler"
+states
+{
+Pain:
+TROO EF 8 A_FaceTarget
+TROO G 6 A_TroopAttack
+goto See
+   }
+}
+
+
+actor SkeletonKing : Revenant replaces Revenant
+{
+ health 200
+ obituary "%o 's bones were no match for the skeleton king"
+ radius 20
+ height 58
+ mass 400
+ speed 12
+ PainChance 110
+ MeleeThreshold 198
+ +MISSILEMORE
+ +FLOORCLIP
+states
+{
+
+}
+}
+
+ACTOR InfernusGuardian : BaronofHell replaces ShotgunGuy
+{
+  Health 4000
+  Radius 36
+  Height 36
+  Mass 1000
+  Speed 16
+  PainChance 55
+  Monster
+  +FLOORCLIP
+  +BOSSDEATH
+  SeeSound "baron/sight"
+  PainSound "baron/pain"
+  DeathSound "demon/death"
+  ActiveSound "pain/active"
+  Obituary "$OB_BARON"
+  HitObituary "$OB_BARONHIT"
+  States
+  {
+  Spawn:
+    BOSS AB 10 A_Look
+    Loop
+  See:
+    BOSS AABBCCDD 3 A_Chase
+    Loop
+  Melee:
+  Missile:
+    BOSS EF 8 A_FaceTarget
+    BOSS G 8 A_BruisAttack
+    Goto See
+  Pain:
+    BOSS H 2
+    BOSS H 2 A_Pain
+    Goto See
+  Death:
+    BOSS I 8
+    BOSS J 8 A_Scream
+    BOSS K 8
+    BOSS L 8 A_NoBlocking
+    BOSS MN 8
+    BOSS O -1 A_BossDeath
+    Stop
+  Raise:
+    BOSS O 8
+    BOSS NMLKJI 8
+    Goto See
+  }
+}
+
+
+ACTOR Alastor : PainElemental replaces HealthBonus
+{
+  Health 559
+  Radius 32
+  Height 56
+  Mass 400
+  Speed 9.5
+  PainChance 130
+  Monster
+  +FLOAT
+  +NOGRAVITY
+  SeeSound "vile/sight"
+  PainSound "baron/pain"
+  DeathSound "cyber/death"
+  ActiveSound "pain/active"
+  States
+  {
+  Spawn:
+    PAIN A 10 A_Look
+    Loop
+  See:
+    PAIN AABBCC 3 A_Chase
+    Loop
+  Missile:
+    PAIN D 5 A_FaceTarget
+    PAIN E 5 A_FaceTarget
+    PAIN F 5 Bright A_FaceTarget
+    PAIN F 0 Bright A_PainAttack
+    Goto See
+  Pain:
+    PAIN G 6
+    PAIN G 6 A_Pain
+    Goto See
+  Death:
+    PAIN H 8 Bright
+    PAIN I 8 Bright A_Scream
+    PAIN JK 8 Bright
+    PAIN L 8 Bright A_PainDie
+    PAIN M 8 Bright
+    Stop
+  Raise:
+    PAIN MLKJIH 8
+    Goto See
+  }
+}
